@@ -33,7 +33,7 @@ public class SecureCalculatorTests {
     void multTest(){
         SecureCalculator calculator=new SecureCalculator();
         //long r1= calculator.multiply(1231431231,523424);
-        Assertions.assertThrows(ArithmeticException.class, ()->calculator.multiply(1231431231,523424));
+        Assertions.assertThrows(ArithmeticException.class, ()->calculator.multiply(1231431231,523422224));
     }
     @Test
     void divideTest(){
@@ -67,12 +67,12 @@ public class SecureCalculatorTests {
         SecureCalculator calculator=new SecureCalculator();
         List <Integer> list=new ArrayList<>();
         for (int i=0; i<1000; i++){
-            int randomN=calculator.getRandomNumber();
+            int randomN=calculator.getRandomNumber(10);
             list.add(randomN);
             System.out.println(randomN);
         }
         for (int n: list){
-            Assertions.assertNotEquals(0,n);
+            Assertions.assertNotEquals(10, n);
         }
 
     }

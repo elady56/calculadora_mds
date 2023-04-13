@@ -1,9 +1,6 @@
 package org.example.unittests;
 
-import java.math.BigInteger;
-import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
 import java.util.logging.Logger;
 
 @SuppressWarnings("ALL")
@@ -42,11 +39,8 @@ public class SecureCalculator {
      */
     public long multiply(int a, int b) throws ArithmeticException{
         log("Multiply %s * %s", a, b);
-        long result = (long)a * (long)b;
-        if (result>Long.MAX_VALUE || (a>0 && b>0 && result<0)){
-            throw new ArithmeticException();
-        }
-        return result;
+        long result1 = Math.multiplyExact((long) a, (long) b);
+        return result1;
     }
 
     /**
@@ -93,8 +87,7 @@ public class SecureCalculator {
      * @return true if number is even (example 2,4,8) false if odd (example 1,3,5)
      */
     public boolean isEven(int a){
-        //Set<Integer> evenNumbers = Set.of(0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 100, 1000);
-        //return evenNumbers.contains(a);
+
         return a%2==0 || a==0;
     }
 
@@ -113,6 +106,6 @@ public class SecureCalculator {
     public int getRandomNumber(int bound){
         log("Generating rnd with bound %s", bound);
         Random random= new Random();
-        return (int) random.nextInt() % bound;
+        return (int) random.nextInt((bound)) % bound;
     }
 }
