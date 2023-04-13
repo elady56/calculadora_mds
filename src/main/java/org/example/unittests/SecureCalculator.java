@@ -42,7 +42,7 @@ public class SecureCalculator {
     public long multiply(int a, int b) throws ArithmeticException{
         log("Multiply %s * %s", a, b);
         long result = (long)a * (long)b;
-        if (result>Integer.MAX_VALUE){
+        if (result>Long.MAX_VALUE){
             throw new ArithmeticException();
         }
         return result;
@@ -112,6 +112,6 @@ public class SecureCalculator {
     public int getRandomNumber(int bound){
         log("Generating rnd with bound %s", bound);
         Random random= new Random();
-        return (int) random.nextInt() * bound;
+        return (int) random.nextInt() % bound;
     }
 }
