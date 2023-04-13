@@ -1,5 +1,6 @@
 package org.example.unittests;
 
+import java.math.BigInteger;
 import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
@@ -42,7 +43,7 @@ public class SecureCalculator {
     public long multiply(int a, int b) throws ArithmeticException{
         log("Multiply %s * %s", a, b);
         long result = (long)a * (long)b;
-        if (result>Long.MAX_VALUE){
+        if (result>Long.MAX_VALUE || (a>0 && b>0 && result<0)){
             throw new ArithmeticException();
         }
         return result;
