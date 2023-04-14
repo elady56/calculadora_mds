@@ -29,6 +29,7 @@ public class SecureCalculator {
      */
     public SecureCalculator(Logger log) {
         this.log = log;
+        log.info("Logging");
     }
 
     /**
@@ -78,7 +79,7 @@ public class SecureCalculator {
      * @return true if number is odd (example 1,3,5) false if even (example 2,4,8)
      */
     public boolean isOdd(int a){
-        return mod(a, 2) == 1;
+        return a%2!=0;
     }
 
     /**
@@ -87,7 +88,6 @@ public class SecureCalculator {
      * @return true if number is even (example 2,4,8) false if odd (example 1,3,5)
      */
     public boolean isEven(int a){
-
         return a%2==0 || a==0;
     }
 
@@ -105,7 +105,8 @@ public class SecureCalculator {
      */
     public int getRandomNumber(int bound){
         log("Generating rnd with bound %s", bound);
+        //Random aux=new Random();
         Random random= new Random();
-        return (int) random.nextInt((bound)) % bound;
+        return (int) random.nextInt((bound))%(bound+1) ;
     }
 }
